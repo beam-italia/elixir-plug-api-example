@@ -10,10 +10,13 @@ Clone the project, enter with your shell inside the directory and run:
 
 You need a postgres DB to run the example:
 
-    1) db user: postgres
-    2) db password: postgres
-    3) db name: users
-    4) db table: users, with two fields (name, surname)
+```sql
+CREATE USER postgres;
+ALTER USER postgres PASSWORD 'postgres';
+CREATE DATABASE users;
+GRANT ALL PRIVILEGES ON DATABASE users TO postgres;
+CREATE TABLE users(name varchar NOT NULL,surname varchar NOT NULL);
+```
 
 You can then run the application as:
 
