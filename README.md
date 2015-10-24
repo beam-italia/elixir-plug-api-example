@@ -19,7 +19,7 @@ You can then run the application as:
 
     $ iex -S mix
 
-then go to browser and go to ```http://127.0.0.1:4000/users```
+then go to browser and go to `http://127.0.0.1:4000/users`
 You can run the tests as:
 
     $ mix test
