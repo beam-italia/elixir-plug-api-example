@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :api, :db,
+config :api, :postgrex,
   hostname: "localhost",
   username: "postgres",
   password: "postgres",

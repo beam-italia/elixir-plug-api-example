@@ -1,5 +1,5 @@
 defmodule Api.Db do
-  @config Application.get_env(:api, :db)
+  @config Application.get_env(:api, :postgrex)
   def users do
     execute("select users.name, users.surname from users;", [])
     |> (fn r -> r.rows end).()
