@@ -1,5 +1,5 @@
 defmodule Api.Db do
-
+  @config Application.get_env(:api, :postgrex)
   def users do
     execute("select users.name, users.surname from users;", [])
     |> (fn r -> r.rows end).()
@@ -23,7 +23,7 @@ defmodule Api.Db do
   end
 
   defp get_connection do
-    {:ok, pid} = Postgrex.Connection.start_link(hostname: "localhost", username: "postgres", password: "postgres", database: "users")
+    {:ok, pid} = Postgrex.Connection.start_link(@config)
     pid
   end
 
