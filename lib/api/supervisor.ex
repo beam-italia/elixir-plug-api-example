@@ -8,7 +8,7 @@ defmodule Api.Supervisor do
 
   def init([]) do
     children = [
-      Plug.Adapters.Cowboy.child_spec(:http, Api.Router, [], [])
+      worker(Api.Worker, [])
     ]
     supervise(children, strategy: :one_for_one)
   end
