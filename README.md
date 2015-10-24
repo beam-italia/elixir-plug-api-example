@@ -26,8 +26,7 @@ You can run the tests as:
 
 ## Improvements to be done
 
-    1) Extract DB configuration
-    2) Extract http port
-    3) Use a pool_boy to handle db connections
-    4) App.users should return not a list but a structure
+    1) Extract http port
+    2) Use a pool_boy to handle db connections
+    3) App.users should return not a list but a structure
 
