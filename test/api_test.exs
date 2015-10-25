@@ -2,14 +2,12 @@ defmodule ApiTest do
   use ExUnit.Case
   use Plug.Test
 
-  import Api.Router
-
-  @opts init([])
+  alias Api.Router
 
   test "/users returns 200" do
-    res = conn(:get, "/users") |> call(@opts)
+    conn = conn(:get, "/users") |> Router.call([])
 
-    assert res.state == :sent
-    assert res.status == 200
+    assert conn.state == :sent
+    assert conn.status == 200
   end
 end
