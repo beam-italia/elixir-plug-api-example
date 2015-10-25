@@ -11,11 +11,12 @@ Clone the project, enter with your shell inside the directory and run:
 You need a postgres DB to run the example:
 
 ```sql
-CREATE USER postgres;
-ALTER USER postgres PASSWORD 'postgres';
+CREATE USER postgres WITH PASSWORD 'postgres';
 CREATE DATABASE users;
 GRANT ALL PRIVILEGES ON DATABASE users TO postgres;
+\c users;
 CREATE TABLE users(name varchar NOT NULL,surname varchar NOT NULL);
+GRANT ALL PRIVILEGES ON TABLE users TO postgres;
 ```
 
 You can then run the application as:
