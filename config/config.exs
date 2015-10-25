@@ -5,3 +5,5 @@ config :api, :postgrex,
   username: "postgres",
   password: "postgres",
   database: "users"
+
+config :ex_unit, trace: true
