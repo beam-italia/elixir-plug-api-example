@@ -11,7 +11,7 @@ Clone the project, enter with your shell inside the directory and run:
 You need a postgres DB to run the example:
 
 ```sql
-CREATE USER postgres WITH PASSWORD 'postgres';
+CREATE USER postgres WITH CREATEDB PASSWORD 'postgres';
 CREATE DATABASE users;
 GRANT ALL PRIVILEGES ON DATABASE users TO postgres;
 \c users;
