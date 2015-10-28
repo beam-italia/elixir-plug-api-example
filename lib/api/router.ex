@@ -1,6 +1,7 @@
 defmodule Api.Router do
   use Plug.Router
 
+  plug PlugBasicAuth, username: "valid", password: "credentials"
   plug :match
   plug :dispatch
 
