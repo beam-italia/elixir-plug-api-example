@@ -4,6 +4,10 @@ defmodule ApiTest do
 
   alias Api.Router
 
+  @username Application.get_env(:api, :basic_auth_user)
+  @password Application.get_env(:api, :basic_auth_password)
+
+
   test "/users with incorrect credentials returns 401" do
     conn = conn(:get, "/users")
     |> put_req_header("authorization", auth_headers_for("invalid", "credentials"))
@@ -15,7 +19,7 @@ defmodule ApiTest do
 
   test "/users with correct credentials returns 200" do
     conn = conn(:get, "/users")
-    |> put_req_header("authorization", auth_headers_for("valid", "credentials"))
+    |> put_req_header("authorization", auth_headers_for(@username, @password))
     |> Router.call([])
 
     assert conn.state == :sent
