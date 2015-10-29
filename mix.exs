@@ -21,7 +21,8 @@ defmodule Api.Mixfile do
       {:plug, "~> 1.0"},
       {:cowboy, "~> 1.0.0"},
       {:poison, "~> 1.5"},
-      {:postgrex, "~> 0.9.1"}
+      {:postgrex, "~> 0.9.1"},
+      {:plug_basic_auth, "~> 1.0"}
     ]
   end
 end

@@ -6,4 +6,8 @@ config :api, :postgrex,
   password: "postgres",
   database: "users"
 
+config :api,
+  basic_auth_user: "valid",
+  basic_auth_password: "credentials"
+
 config :ex_unit, trace: true
