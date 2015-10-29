@@ -4,7 +4,7 @@ config :api, :postgrex,
   hostname: "localhost",
   username: "postgres",
   password: "postgres",
-  database: "postgres"
+  database: "users"
 
 config :api,
   basic_auth_user: "valid",
