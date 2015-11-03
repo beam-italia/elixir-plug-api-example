@@ -1,6 +1,6 @@
 defmodule ApiTest do
   use ExUnit.Case
-  use Plug.Test
+  use Plug.Test, async: false
 
   alias Api.Router
 
@@ -10,9 +10,7 @@ defmodule ApiTest do
   import Mock
 
   test "/users with incorrect credentials returns 401" do
-    conn = conn(:get, "/users")
-    |> put_req_header("authorization", auth_headers_for("invalid", "credentials"))
-    |> Router.call([])
+    conn = unauthorized_request(:get, "/users")
 
     assert conn.state == :sent
     assert conn.status == 401
@@ -23,9 +21,7 @@ defmodule ApiTest do
     users_as_json = Poison.encode!(users)
 
     with_mock App, [users: fn ->  users end] do
-      conn = conn(:get, "/users")
-      |> put_req_header("authorization", auth_headers_for(@username, @password))
-      |> Router.call([])
+      conn = authorized_request(:get, "/users")
 
       assert conn.state == :sent
       assert conn.status == 200
@@ -35,5 +31,17 @@ defmodule ApiTest do
 
   defp auth_headers_for(username, password) do
     "Basic " <> Base.encode64(username <> ":" <> password)
+  end
+
+  defp unauthorized_request(method, endpoint) do
+    conn(method, endpoint)
+      |> put_req_header("authorization", auth_headers_for("invalid", "credentials"))
+      |> Router.call([])
+  end
+
+  defp authorized_request(method, endpoint) do
+    conn(method, endpoint)
+      |> put_req_header("authorization", auth_headers_for(@username, @password))
+      |> Router.call([])
   end
 end
