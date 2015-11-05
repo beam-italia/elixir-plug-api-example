@@ -8,6 +8,7 @@ config :api, :postgrex,
 
 config :api,
   basic_auth_user: "valid",
-  basic_auth_password: "credentials"
+  basic_auth_password: "credentials",
+  http_port: 4000
 
 config :ex_unit, trace: true
