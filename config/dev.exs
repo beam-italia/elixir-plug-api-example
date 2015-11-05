@@ -1,3 +1,3 @@
 use Mix.Config
 
-config :api, port: 8082
+config :api, http_port: 8082

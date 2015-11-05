@@ -8,7 +8,6 @@ config :api, :postgrex,
 
 config :api,
   basic_auth_user: "valid",
-  basic_auth_password: "credentials",
-  http_port: 4000
+  basic_auth_password: "credentials"
 
 import_config "#{Mix.env}.exs"
