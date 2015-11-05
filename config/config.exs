@@ -11,4 +11,4 @@ config :api,
   basic_auth_password: "credentials",
   http_port: 4000
 
-config :ex_unit, trace: true
+import_config "#{Mix.env}.exs"
