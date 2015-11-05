@@ -9,12 +9,14 @@ defmodule Api.Router do
     plug :dispatch
 
   get "/users" do
-    users = App.users
-    send_resp(conn, 200, Poison.encode!(users))
+    send_resp(conn, 200, encode(App.users))
   end
 
   match(_) do
     send_resp(conn, 404, "")
   end
 
+  defp encode(users) do
+    Poison.encode!(users)
+  end
 end
