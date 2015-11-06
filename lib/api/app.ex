@@ -1,7 +1,8 @@
 defmodule App do
 
   def users do
-    Api.Db.users
+    users = Api.Db.users
+    {:ok, users}
   end
 
 end

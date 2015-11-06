@@ -15,15 +15,15 @@ defmodule ApiTest do
     {:ok, users: users, users_as_json: users_as_json}
   end
 
-  test "get /users with invalid credentials returns 401" do
+  test "unauthorized get /users returns 401" do
     conn = unauthorized_request(:get, "/users")
 
     assert conn.state == :sent
     assert conn.status == 401
   end
 
-  test_with_mock "get /users with valid credentials returns 200", %{users: users, users_as_json: users_as_json},
-    App, [], [users: fn ->  users end] do
+  test_with_mock "authorized get /users returns users", %{users: users, users_as_json: users_as_json},
+    App, [], [users: fn ->  {:ok, users} end] do
     conn = authorized_request(:get, "/users")
 
     assert conn.state == :sent
