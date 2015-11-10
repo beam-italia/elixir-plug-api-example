@@ -1,6 +1,7 @@
 defmodule Api.Router do
   use Plug.Router
 
+  plug Corsica, max_age: 600, origins: "*"
   plug PlugBasicAuth,
     username: Application.get_env(:api, :basic_auth_user),
     password: Application.get_env(:api, :basic_auth_password)
