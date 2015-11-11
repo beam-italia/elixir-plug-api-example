@@ -13,11 +13,21 @@ defmodule Api.Router do
     send_resp(conn, 200, encode(App.users))
   end
 
+  post "/users" do
+    {:ok, body, conn} = read_body(conn)
+    App.add(decode(body))
+    send_resp(conn, 201, "")
+  end
+
   match(_) do
     send_resp(conn, 404, "")
   end
 
   defp encode(users) do
     Poison.encode!(users)
+  end
+
+  defp decode(body) do
+    Poison.decode!(body, as: User)
   end
 end

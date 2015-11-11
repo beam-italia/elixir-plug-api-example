@@ -8,6 +8,10 @@ defmodule Api.Db do
     |> to_structs
   end
 
+  def add(%User{name: name, surname: surname}) do
+    execute("insert into users values ($1, $2)", [name, surname], [])
+  end
+
   defp to_structs(users) do
     users
     |> Enum.map(fn [name, surname] -> %User{name: name, surname: surname} end)
