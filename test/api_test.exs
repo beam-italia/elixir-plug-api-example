@@ -31,6 +31,13 @@ defmodule ApiTest do
     assert conn.resp_body == users_as_json
   end
 
+  test "sets cors headers for external origins" do
+    conn = conn(:get, "/")
+            |> put_req_header("origin", "example.com")
+            |> Router.call([])
+    assert get_resp_header(conn, "access-control-allow-origin") == ["*"]
+  end
+
   defp auth_headers_for(username, password) do
     "Basic " <> Base.encode64(username <> ":" <> password)
   end
