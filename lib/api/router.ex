@@ -6,8 +6,8 @@ defmodule Api.Router do
     username: Application.get_env(:api, :basic_auth_user),
     password: Application.get_env(:api, :basic_auth_password)
 
-    plug :match
-    plug :dispatch
+  plug :match
+  plug :dispatch
 
   get "/users" do
     send_resp(conn, 200, encode(App.users))
