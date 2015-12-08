@@ -26,12 +26,4 @@ defmodule Api.Db.Supervisor do
     supervise(children, options)
   end
 
-  def execute(query) do
-    :poolboy.transaction(
-      :db_connection,
-      fn(pid) -> Api.Db.Worker.execute(pid, query) end,
-      :infinity
-    )
-  end
-
 end

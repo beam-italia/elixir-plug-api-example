@@ -1,4 +1,5 @@
 defmodule Api.Db.Worker do
+
   use GenServer
 
   @config Application.get_env(:api, :postgrex)
@@ -11,9 +12,9 @@ defmodule Api.Db.Worker do
     Postgrex.Connection.stop(db_connection_pid)
   end
 
-  def handle_call(query, _, connection_pid) do
-    result_query = Postgrex.Connection.query!(connection_pid, query, [])
-    {:reply, result_query, connection_pid}
+  def handle_call(query, _, db_connection_pid) do
+    result_query = Postgrex.Connection.query!(db_connection_pid, query, [])
+    {:reply, result_query, db_connection_pid}
   end
 
   def start_link([]) do
