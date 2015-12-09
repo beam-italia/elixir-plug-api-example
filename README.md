@@ -23,13 +23,18 @@ You can then run the application as:
 
     $ iex -S mix
 
-then go to browser and go to `http://127.0.0.1:4000/users`
+then go to browser and go to `http://127.0.0.1:8082/users`
+
+Default credentials
+
+	Username : valid
+	Password : credentials
+
 You can run the tests as:
 
     $ mix test
 
 ## Improvements to be done
 
-    1) Use a pool_boy to handle db connections
-    2) App.users should return not a list but a structure
+    1) App.users should return not a list but a structure
 
