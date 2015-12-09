@@ -24,7 +24,8 @@ defmodule Api.Mixfile do
       {:poison, "~> 1.5"},
       {:postgrex, "~> 0.9.1"},
       {:plug_basic_auth, "~> 1.0"},
-      {:mock, "~> 0.1.1"}
+      {:mock, "~> 0.1.1"},
+      {:poolboy, "~> 1.5"}
     ]
   end
 end
